@@ -3,6 +3,7 @@ pragma solidity ^0.8.9;
 
 contract Lottery {
 
+    // state variables
     address public manager;
     address[] public players;
 

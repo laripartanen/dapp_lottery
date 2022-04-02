@@ -1,7 +1,7 @@
 require('dotenv').config();
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 const Web3 = require('web3');
-const { abi, evm} = require('./compile');
+const { abi, evm } = require('./compile');
 
 let provider = new HDWalletProvider(
     process.env.ETH_MNEMONIC,
@@ -17,6 +17,7 @@ const web3 = new Web3(provider);
         .deploy({ data: evm.bytecode.object })
         .send({ gas: '1000000', from: accounts[0] });
 
+    console.log(web3.eth.contract(abi));
     console.log('Contract deployed to', result.options.address);
     provider.engine.stop();
 })();
